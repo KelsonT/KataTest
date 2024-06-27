@@ -1,0 +1,98 @@
+<VARIABLE SET STRING Option="\x00" Destination="%Space%" Value=" " NoEmbeddedVars="FALSE"/>
+<VARIABLE MODIFY STRING Option="\x11" Destination="%Space%" Filename="C:\\Users\\Tree\\Documents\\KataTest.txt" Strip="FALSE" NoEmbeddedVars="FALSE"/>
+<VARIABLE MODIFY STRING Option="\x11" Destination="%Space%" Filename="C:\\Users\\Tree\\Documents\\CleanKata.txt" Strip="FALSE" NoEmbeddedVars="FALSE"/>
+<VARIABLE MODIFY STRING Option="\x11" Destination="%Space%" Filename="C:\\Users\\Tree\\Documents\\KataGoText.txt" Strip="FALSE" NoEmbeddedVars="FALSE"/>
+<WEB SITE URL="https://www.codewars.com/dashboard" Wait="FALSE" Default_Browser="TRUE" NoEmbeddedVars="FALSE" _IGNORE="0x000C"/>
+<DELAY Flags="\x11" Time="5"/>
+<WINDOW ACTIVATE Title="Brave" Exact_Match="FALSE" Wildcards="FALSE"/>
+<DELAY Flags="\x11" Time="5"/>
+<WINDOW ACTIVATE Title="Brave" Exact_Match="FALSE" Wildcards="FALSE"/>
+<TEXT TYPE Action="0" Text="<TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB>"/>
+<DELAY Flags="\x11" Time="1"/>
+<TEXT TYPE Action="0" Text="<ENTER>"/>
+<DELAY Flags="\x11" Time="5"/>
+<MOUSE MOVE Option="\x02" X="374" Y="572" _PROMPT="0x000A"/>
+<MOUSE LEFT CLICK/>
+<DELAY Flags="\x11" Time="1"/>
+<TEXT TYPE Action="0" Text="<CTRLD>a<CTRLU>"/>
+<DELAY Flags="\x11" Time="1"/>
+<TEXT TYPE Action="0" Text="<CTRLD>c<CTRLU>"/>
+<CLIPBOARD COPY/>
+<DELAY Flags="\x11" Time="1"/>
+<VARIABLE SET STRING Option="\x02" Destination="%KataCopy%" NoEmbeddedVars="FALSE"/>
+<DELAY Flags="\x11" Time="1"/>
+<VARIABLE MODIFY STRING Option="\x11" Destination="%KataCopy%" Filename="C:\\Users\\Tree\\Documents\\KataGoText.txt" Strip="FALSE" NoEmbeddedVars="FALSE"/>
+<DELAY Flags="\x11" Time="1"/>
+<VARIABLE SET STRING Option="\x00" Destination="%Preface%" Value="I am trying to complete some code in Golang.    First, I will provide you with the problem.  Second, I will provide you with the code I have started to write, please update the code from what I have started with. Thrid, I will provide the test code that will I will need you to use to verify the code you have help me create works.  \r\n\r\n" NoEmbeddedVars="FALSE"/>
+<DELAY Flags="\x11" Time="1"/>
+<VARIABLE MODIFY STRING Option="\x12" Destination="%Preface%" Filename="C:\\Users\\Tree\\Documents\\CleanKata.txt" Strip="FALSE" NoEmbeddedVars="FALSE"/>
+<DELAY Flags="\x11" Time="1"/>
+<VARIABLE SET STRING Option="\x00" Destination="%T[2]%" Value="\r\n     " NoEmbeddedVars="FALSE"/>
+<DELAY Flags="\x11" Time="1"/>
+<TEXT FILE BEGIN PROCESS Filename="C:\\Users\\Tree\\Documents\\KataGoText.txt" Start_Record="1" Process_All="TRUE" Records="1" Variable="%T[13]%"/>
+<IF VARIABLE Variable="%T[13]%" Condition="\x00" Value="Output" IgnoreCase="FALSE"/>
+<VARIABLE SET BOOL Destination="%CopyOn%" Command="263" Value="TRUE"/>
+<END IF/>
+<IF VARIABLE Variable="%T[13]%" Condition="\x06" Value="FUNDAMENTALS" IgnoreCase="FALSE"/>
+<VARIABLE SET BOOL Destination="%CopyOn%" Command="263" Value="FALSE"/>
+<END IF/>
+<IF VARIABLE Variable="%T[13]%" Condition="\x00" Value="Solution" IgnoreCase="FALSE"/>
+<VARIABLE SET BOOL Destination="%CopyOn%" Command="263" Value="TRUE"/>
+<END IF/>
+<IF VARIABLE Variable="%T[13]%" Condition="\x00" Value="Solution" IgnoreCase="FALSE"/>
+<VARIABLE SET STRING Option="\x00" Destination="%T[13]%" Value="Here is the code I have started to write please complete the following code.  \r\n" NoEmbeddedVars="FALSE"/>
+<END IF/>
+<IF VARIABLE Variable="%T[13]%" Condition="\x00" Value="Sample Tests" IgnoreCase="FALSE"/>
+<VARIABLE SET STRING Option="\x00" Destination="%T[13]%" Value="Here is the code that will need to be used to test the code you have helped completed.  \r\n" NoEmbeddedVars="FALSE"/>
+<END IF/>
+<IF VARIABLE Variable="%T[13]%" Condition="\x06" Value="SKIP" IgnoreCase="FALSE"/>
+<VARIABLE SET BOOL Destination="%CopyOn%" Command="263" Value="FALSE"/>
+<END IF/>
+<IF VARIABLE Variable="%T[13]%" Condition="\x06" Value="UNLOCK SOLUTIONS" IgnoreCase="FALSE"/>
+<VARIABLE SET BOOL Destination="%CopyOn%" Command="263" Value="FALSE"/>
+<END IF/>
+<IF VARIABLE Variable="%CopyOn%" Condition="\x00" Value="True" IgnoreCase="FALSE"/>
+<VARIABLE MODIFY STRING Option="\x06" Destination="%T[13]%" Value="%T[2]%" NoEmbeddedVars="FALSE"/>
+<VARIABLE MODIFY STRING Option="\x12" Destination="%T[13]%" Filename="C:\\Users\\Tree\\Documents\\CleanKata.txt" Strip="FALSE" NoEmbeddedVars="FALSE"/>
+<END IF/>
+<TEXT FILE END PROCESS/>
+<DELAY Flags="\x11" Time="1"/>
+<DELAY Flags="\x11" Time="1"/>
+<DELAY Flags="\x11" Time="1"/>
+<WEB SITE URL="https://chatgpt.com/" Wait="FALSE" Default_Browser="TRUE" NoEmbeddedVars="FALSE" _IGNORE="0x000C"/>
+<DELAY Flags="\x11" Time="5"/>
+<WINDOW ACTIVATE Title="Brave" Exact_Match="FALSE" Wildcards="FALSE"/>
+<DELAY Flags="\x11" Time="5"/>
+<WINDOW ACTIVATE Title="Brave" Exact_Match="FALSE" Wildcards="FALSE"/>
+<DELAY Flags="\x11" Time="1"/>
+<VARIABLE SET STRING Option="\x03" Destination="%ToAITest%" Filename="C:\\Users\\Tree\\Documents\\CleanKata.txt" Strip="FALSE" NoEmbeddedVars="FALSE"/>
+<DELAY Flags="\x11" Time="1"/>
+<TEXT TYPE Action="1" Text="%ToAITest%"/>
+<DELAY Flags="\x11" Time="5"/>
+<TEXT TYPE Action="0" Text="<ENTER>"/>
+<DELAY Flags="\x11" Time="5"/>
+<DELAY Flags="\x11" Time="5"/>
+<DELAY Flags="\x11" Time="5"/>
+<DELAY Flags="\x11" Time="5"/>
+<DELAY Flags="\x11" Time="5"/>
+<DELAY Flags="\x11" Time="5"/>
+<TEXT TYPE Action="0" Text="<CTRLD>f<CTRLU>"/>
+<DELAY Flags="\x11" Time="1"/>
+<TEXT TYPE Action="0" Text="completed Go code:"/>
+<DELAY Flags="\x11" Time="1"/>
+<TEXT TYPE Action="0" Text="<ESC><TAB>"/>
+<DELAY Flags="\x11" Time="1"/>
+<TEXT TYPE Action="0" Text="<ENTER>"/>
+<DELAY Flags="\x11" Time="1"/>
+<VARIABLE SET STRING Option="\x02" Destination="%CODE%" NoEmbeddedVars="FALSE"/>
+<DELAY Flags="\x11" Time="1"/>
+<TEXT TYPE Action="0" Text="<CONTROL><PAGE UP>"/>
+<DELAY Flags="\x11" Time="1"/>
+<DELAY Flags="\x11" Time="1"/>
+<DELAY Flags="\x11" Time="1"/>
+<MOUSE MOVE Option="\x02" X="2666" Y="1022" _PROMPT="0x000A"/>
+<MOUSE LEFT CLICK/>
+<DELAY Flags="\x11" Time="1"/>
+<TEXT TYPE Action="0" Text="<CTRLD>a<CTRLU>"/>
+<DELAY Flags="\x11" Time="1"/>
+<CLIPBOARD PASTE/>
